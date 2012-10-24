@@ -1,19 +1,23 @@
-<h2>Show Song</h2>
+<h2><%= @song.name %></h2>
 
 Artists: <br/>
 <% @song.artists.each do |a| %>
   <%= a.name %><br/>
-<% end %>
+<% end %><br/>
+Genres: <br/>
+<% @song.genres.each do |g| %>
+  <%= g.name %><br/>
+<% end %><br/>
+Albums: <br/>
+<% @song.albums.each do |a| %>
+  <%= a.name %><br/>
+<% end %><br/>
 <%= render "buyform" %>
-Song Name: <%= @song.name %><br/>
-Song ID: <%= @song.id %><br/>
-User ID: <%= current_user.id %><br/>
-User Name: <%= current_user.name %><br/>
-User Balance: <%= current_user.balance %><br/>
+
 Song Rating: <%= @song.rating %><br/>
 Song Favorite: <%= @song.favorite %><br/>
 Song Price: <%= @song.price %><br/>
-Song Price: <%= @song.lyrics %><br/>
+Song Lyrics: <%= @song.lyrics %><br/>
 
 
 <%= audio_tag(@song.song_file, :controls => true) if @song.song_file.present? %>
