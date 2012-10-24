@@ -15,8 +15,6 @@
 song id:<%= @song.id %>
 <% if @song.users.include?(current_user) %>
   Already have this song.
-<% elsif @song.price > current_user.balance %>
-  Get more money.
 <% else %>
   <%= form_tag '/buy' do %>
     <%= hidden_field :song, :id %>
