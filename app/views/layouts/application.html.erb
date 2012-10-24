@@ -21,8 +21,8 @@
       </ul>
       </ul>	
 			<ul class="nav pull-right">
-			  <% if signed_in? %>
-			    <li><%= link_to current_user.name, user_path(current_user) %></li>
+			  <% if current_user %>
+			    <li><%= link_to current_user.name, edit_user_registration_path %></li>
 				  
 				  <li><%= link_to "Sign Out", songs_path, :method => :delete %></li>
 			  <% else %>
