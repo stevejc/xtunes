@@ -1,0 +1,20 @@
+<h2>Artist Index</h2>
+
+
+<ul>
+<% @artists.each do |a| %>
+  <li>
+  <%= a.name %>
+  <%= link_to "Edit ", edit_artist_path(a) %>|
+  <%= link_to "Show ", artist_path(a) %>
+  <% if current_user %>
+  |<%= link_to " Delete", artist_path(a), :method => :delete %>
+  <% end %>
+  </li>
+  
+<% end %>
+</ul>
+
+<br/>
+<br/>
+<%= link_to "Add an Artist", new_artist_path %>

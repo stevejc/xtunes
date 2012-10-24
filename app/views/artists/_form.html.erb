@@ -1,0 +1,23 @@
+<% if @artist.errors.any? %>
+  <h2>Errors</h2>
+  <ul>
+    <% @artist.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for(@artist) do |f| %>
+  <%= f.label "Name" %>
+  <%= f.text_field :name %><br/>
+  <%= f.label "Date of Birth" %>
+  <%= f.text_field :dob %><br/>
+  <%= f.label "Bio" %>
+  <%= f.text_area :bio %><br/>
+  <%= f.label "Add a Artist Photo, Enter a URL" %>
+  <%= f.text_field :remote_photo_url %><br/>
+  <%= f.label "or Up Load One" %>
+  <%= f.file_field :photo %><br/>
+  
+  <%= f.submit %>
+<% end %>

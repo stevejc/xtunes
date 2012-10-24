@@ -1,0 +1,10 @@
+<h2>Show Artist</h2>
+
+<%= @artist.name %><br/>
+<%= @artist.dob %><br/>
+<%= @artist.bio %><br/>
+<%= image_tag(@artist.photo) if @artist.photo.present? %>
+
+<br/>
+<%= link_to "Edit ", edit_artist_path(@artist) %>|
+<%= link_to " Delete", artist_path(@artist), :method => :delete %>
