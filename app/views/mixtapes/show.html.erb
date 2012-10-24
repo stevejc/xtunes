@@ -1,0 +1,13 @@
+<h2>Show Mixtape</h2>
+
+<%= @mixtape.name %>
+<br/>
+Playlist
+<ul>
+  <% @mixtape.songs.each do |s| %>
+    <li><%= s.name %>
+  <% end %>
+<ul>
+<br/>
+<%= link_to "Edit ", edit_mixtape_path(@mixtape) %>|
+<%= link_to " Delete", mixtape_path(@mixtape), :method => :delete %>

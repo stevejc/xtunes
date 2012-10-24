@@ -1,4 +1,4 @@
-class Songs < ActiveRecord::Base
+class Song < ActiveRecord::Base
   attr_accessible :name, :song_file, :rating, :favorite, :price, :photo, :lyrics, :artist_ids
   
   has_and_belongs_to_many :artists

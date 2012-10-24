@@ -1,0 +1,16 @@
+<h2>Mixtapes Index</h2>
+
+<ul>
+<% @mixtapes.each do |m| %>
+  <li>
+  <%= m.name %>
+  <%= link_to "Edit", edit_mixtape_path(m) %>
+  <%= link_to "Show", mixtape_path(m) %>
+  <%= link_to "Delete", mixtape_path(m), :method => :delete %>
+  </li>
+<% end %>
+</ul>
+
+<br/>
+<br/>
+<%= link_to "Add a Mixtape", new_mixtape_path %>

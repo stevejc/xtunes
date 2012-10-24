@@ -1,0 +1,20 @@
+<% if @mixtape.errors.any? %>
+  <h2>Errors</h2>
+  <ul>
+    <% @mixtape.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for(@mixtape) do |f| %>
+  <%= f.label "Name" %>
+  <%= f.text_field :name %><br/>
+  <%= f.fields_for :playlists do |p| %>
+    <%= p.label :name, "Song" %>
+    <%= select_tag('playlist[song_ids]', options_from_collection_for_select(Song.all, :id, :name), {:multiple => true, :size => 6}) %>
+
+  <% end %>
+  <br/>
+  <%= f.submit %>
+<% end %>
