@@ -1,0 +1,9 @@
+<h2>Show Album</h2>
+<br/>
+<%= @album.name %><br/>
+
+<%= image_tag(@album.photo) if @album.photo.present? %>
+
+<br/>
+<%= link_to "Edit ", edit_album_path(@album) %>|
+<%= link_to " Delete", album_path(@album), :method => :delete %>
