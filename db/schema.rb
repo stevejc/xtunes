@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(:version => 20121024182423) do
   end
 
   create_table "users", :force => true do |t|
+    t.string   "name"
     t.integer  "age"
     t.string   "gender"
     t.decimal  "balance"
