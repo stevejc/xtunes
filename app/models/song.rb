@@ -1,5 +1,5 @@
 class Song < ActiveRecord::Base
-  attr_accessible :name, :song_file, :rating, :favorite, :price, :photo, :lyrics, :artist_ids
+  attr_accessible :name, :song_file, :rating, :favorite, :price, :photo, :lyrics, :artist_ids, :genre_ids, :album_ids
   
   has_and_belongs_to_many :artists
   has_and_belongs_to_many :albums

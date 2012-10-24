@@ -21,7 +21,11 @@
   <%= f.label "Upload a Photo" %>
   <%= f.file_field :photo %><br/> 
   <%= f.label "Artist" %><br/>
-  <%= select_tag('song[artist_ids]', options_from_collection_for_select(Artist.all, :id, :name), {:multiple => true, :size => 6}) %><br/>
+  <%= select_tag('song[artist_ids]', options_from_collection_for_select(Artist.all, :id, :name), {:multiple => true, :size => 3}) %><br/>
+  <%= f.label "Genre" %><br/>
+  <%= select_tag('song[genre_ids]', options_from_collection_for_select(Genre.all, :id, :name), {:multiple => true, :size => 3}) %><br/>
+  <%= f.label "Album" %><br/>
+   <%= select_tag('song[album_ids]', options_from_collection_for_select(Album.all, :id, :name), {:multiple => true, :size => 3}) %><br/>
   
   <%= f.label "Upload a song" %><br/>
   <%= f.file_field :song_file %><br/>
