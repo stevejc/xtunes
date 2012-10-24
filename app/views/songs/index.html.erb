@@ -1,0 +1,15 @@
+<h2>Song Index</h2>
+
+<ul>
+<% @songs.each do |s| %>
+  <li>
+  <%= s.name %>
+  <%= link_to "Edit ", edit_song_path(s) %>|
+   <%= link_to " Show ", song_path(s) %>|
+  <%= link_to " Delete", song_path(s), :method => :delete %><br/>
+  <%= audio_tag(s.song_file, :controls => true) if s.song_file.present? %><br/>
+  </li>  
+<% end %>
+</ul>
+
+<%= link_to "Add a Song", new_song_path %>

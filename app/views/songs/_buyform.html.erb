@@ -1,0 +1,27 @@
+<% if @song.errors.any? %>
+  <h2>Errors</h2>
+  <ul>
+    <% @song.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+
+
+
+
+song id:<%= @song.id %>
+<% if @song.users.include?(current_user) %>
+  Already have this song.
+<% elsif @song.price > current_user.balance %>
+  Get more money.
+<% else %>
+  <%= form_tag '/buy' do %>
+    <%= hidden_field :song, :id %>
+    <%= hidden_field :song, :price %>
+    <%= submit_tag "Buy it Now"%>
+  <% end %>
+
+<% end %>
