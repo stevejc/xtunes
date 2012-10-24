@@ -1,0 +1,14 @@
+<% if @genre.errors.any? %>
+  <h2>Errors</h2>
+  <ul>
+    <% @genre.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for(@genre) do |f| %>
+  <%= f.label "Name" %>
+  <%= f.text_field :name %><br/>
+  <%= f.submit %>
+<% end %>

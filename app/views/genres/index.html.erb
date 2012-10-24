@@ -1,0 +1,17 @@
+<h2>Genre Index</h2>
+
+<ul>
+<% @genres.each do |g| %>
+  <li>
+  <%= g.name %>
+  <%= link_to "Edit", edit_genre_path(g) %>
+  <%= link_to "Show", genre_path(g) %>
+  <%= link_to "Delete", genre_path(g), :method => :delete %>
+  </li>
+  
+<% end %>
+</ul>
+
+<br/>
+<br/>
+<%= link_to "Add a Genre", new_genre_path %>

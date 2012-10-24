@@ -1,0 +1,6 @@
+<h2>Show Genre</h2>
+
+<%= @genre.name %>
+<br/>
+<%= link_to "Edit ", edit_genre_path(@genre) %>|
+<%= link_to " Delete", genre_path(@genre), :method => :delete %>
