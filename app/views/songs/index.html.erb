@@ -3,10 +3,7 @@
 <ul>
 <% @songs.each do |s| %>
   <li>
-  <%= s.name %>
-  <%= link_to "Edit ", edit_song_path(s) %>|
-   <%= link_to " Show ", song_path(s) %>|
-  <%= link_to " Delete", song_path(s), :method => :delete %><br/>
+  <%= link_to s.name, song_path(s) %><br/>
   <%= audio_tag(s.song_file, :controls => true) if s.song_file.present? %><br/>
   </li>  
 <% end %>

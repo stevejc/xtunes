@@ -1,5 +1,10 @@
 <h2><%= @song.name %></h2>
 
+<% if current_user.try(:admin?) %>
+<%= link_to "Edit ", edit_song_path(@song) %>|
+<%= link_to " Delete", song_path(@song), :method => :delete %><br/>
+<% end %>
+
 Artists: <br/>
 <% @song.artists.each do |a| %>
   <%= a.name %><br/>
