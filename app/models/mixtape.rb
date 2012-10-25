@@ -1,5 +1,5 @@
 class Mixtape < ActiveRecord::Base
-  attr_accessible :name, :playlists_attributes, :songs_attributes
+  attr_accessible :name, :playlists_attributes, :songs_attributes, :song_ids
   
   has_many :playlists
   has_many :songs, :through => :playlists

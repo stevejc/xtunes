@@ -11,7 +11,8 @@ class MixtapesController < ApplicationController
     end
 
     def create
-      @mixtape = current_user.mixtapes.build(params[:mixtape])
+      @mixtape = current_user.mixtapes.new(params[:mixtape])
+
 
 
       if @mixtape.save
