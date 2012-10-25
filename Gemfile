@@ -9,7 +9,7 @@ gem 'carrierwave'
 gem 'devise'
 gem "fog"
 gem "httparty", "~> 0.9.0"
-gem 'sqlite3'
+gem 'pg'
 gem 'thin'
 
 
