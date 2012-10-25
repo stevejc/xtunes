@@ -7,8 +7,8 @@ gem 'rails', '3.2.8'
 
 gem 'carrierwave'
 gem 'devise'
-gem "fog"
-gem "httparty", "~> 0.9.0"
+gem 'fog'
+gem 'httparty'
 gem 'pg'
 gem 'thin'
 
