@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :songs
   has_many :mixtapes
   
+  
   def gravatar_url
     stripped_email = email.strip
     downcased_email = stripped_email.downcase
