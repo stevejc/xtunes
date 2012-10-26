@@ -5,7 +5,9 @@
 Playlist
 <ul>
   <% @mixtape.songs.each do |s| %>
-    <li><%= s.name %>
+    <li><%= s.name %><br/>
+    <%= audio_tag(s.song_file, :controls => true) if s.song_file.present? %>
+    </li>
   <% end %>
 <ul>
 <br/>
