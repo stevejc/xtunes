@@ -1,4 +1,11 @@
 class AlbumsController < ApplicationController
+  before_filter :authenticate_user!
+  before_filter do 
+    unless current_user && current_user.admin?
+      flash[:warning] = "You do not have access to the requested page!"
+      redirect_to home_path 
+    end
+  end
   
     def index
       @albums = Album.all
