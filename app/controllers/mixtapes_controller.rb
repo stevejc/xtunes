@@ -13,9 +13,9 @@ class MixtapesController < ApplicationController
     def create
       @mixtape = current_user.mixtapes.new(params[:mixtape])
 
-
-
       if @mixtape.save
+        flash[:notice] = "You have successfully added the #{@mixtape.name} mixtape!"
+        
         redirect_to mixtapes_path
       else
         render :new
@@ -34,6 +34,7 @@ class MixtapesController < ApplicationController
       @mixtape = Mixtape.find(params[:id])
 
       if @mixtape.update_attributes(params[:mixtape])
+        flash[:notice] = "You have successfully updated the #{@mixtape.name} mixtape!"
         redirect_to mixtape_path(@mixtape)
       else
         render :edit

@@ -13,6 +13,7 @@ class ArtistsController < ApplicationController
       @artist = Artist.new(params[:artist])
 
       if @artist.save
+        flash[:notice] = "You have added #{@artist.name}!"
         redirect_to artists_path
       else
         render :new
@@ -31,6 +32,7 @@ class ArtistsController < ApplicationController
       @artist = Artist.find(params[:id])
 
       if @artist.update_attributes(params[:artist])
+        flash[:notice] = "You have updated #{@artist.name}!"
         redirect_to artist_path(@artist)
       else
         render :edit
