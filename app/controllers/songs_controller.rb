@@ -1,7 +1,11 @@
 class SongsController < ApplicationController
   
   def index
-    @songs = Song.all
+    if current_user.try(:admin?) || !current_user
+      @songs = Song.all
+    else
+      @songs = Song.all
+    end
   end
   
   def new
@@ -44,15 +48,14 @@ class SongsController < ApplicationController
     @user = User.find(current_user)
     @song.users << User.find(current_user)
     
-    if @user.balance >= @song.price 
-      new_balance = @user.balance - @song.price
-            flash[:notice] = "You have purchased #{@song.name}!"
-    else
-      flash[:notice] = "You have don't have enough money in your account to pusrchase #{@song.name}!"
-    end
+    #if @user.balance >= @song.price 
+    #  new_balance = @user.balance - @song.price
+    #        flash[:notice] = "You have purchased #{@song.name}!"
+    #else
+     # flash[:notice] = "You have don't have enough money in your account to pusrchase #{@song.name}!"
+    #end
     
-    if @song.save && @user.update_attribute(:balance, new_balance) && new_balance  >= 0
-
+    if @song.save #&& @user.update_attribute(:balance, new_balance) && new_balance  >= 0
       redirect_to songs_path
     else
       render :show

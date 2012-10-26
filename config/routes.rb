@@ -4,6 +4,7 @@ Xtunes::Application.routes.draw do
   resources :songs, :albums, :artists, :genres, :mixtapes
   
   match '/home' => 'home#index'
+  match '/buy' => 'songs#buy', :via => 'post'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

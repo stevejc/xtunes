@@ -4,11 +4,13 @@ class Song < ActiveRecord::Base
   has_and_belongs_to_many :artists
   has_and_belongs_to_many :albums
   has_and_belongs_to_many :genres
-  has_and_belongs_to_many :users
   has_many :playlists
   has_many :mixtapes, :through => :playlists
+  has_many :purchases
+  has_many :users, :through => :purchases
   
   validates :name, :presence => true
   
   mount_uploader :song_file, Mp3Uploader
+  
 end
