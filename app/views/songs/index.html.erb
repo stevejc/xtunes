@@ -1,23 +1,53 @@
-<h2>Find a Song to Add to Your Collection</h2>
+<div>
+	<h2>Find a Song to Add to Your Collection</h2>
+</div>
+
 <% if @songs.any? %>
   
 <%= search_form_for @search do |f| %>
   <div class="field">
-  <%= f.label :name_cont, "Name contains" %>
+  <%= f.label :name_cont, "Search by Name" %>
   <%= f.text_field :name_cont %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Search" %>
+  </div>
+  
+  <div class="field">
+  <%= f.label :genres_name_cont, "Search by Genre" %>
+  <%= f.text_field :genres_name_cont %>
   </div>
   <div class="actions">
     <%= f.submit "Search" %>
   </div>
 <% end %>
 
-<ul>
+<table class="table">
+  <tr>
+    <th>Song</th>
+    <th>Artists</th>
+    <th>Albums</th>
+    <th>Genres</th>
+  </tr>
+
 <% @songs.each do |s| %>
-  <li>
-  <%= link_to s.name, song_path(s) %><br/>
-  </li>  
+  <tr>
+    <td><%= link_to s.name, song_path(s) %></td>
+    <td><% s.artists.each do |a| %>
+      <%= a.name %><br/>
+    <% end %></td>
+    <td><% s.albums.each do |a| %>
+      <%= a.name %><br/>
+    <% end %></td>
+    <td><% s.genres.each do |g| %>
+      <%= g.name %><br/>
+    <% end %></td>
+  <tr/> 
 <% end %>
-</ul>
 <% end %>
 
+</table>
+<br/>
+
 <%= link_to "Add a Song", new_song_path %>
+
