@@ -1,5 +1,5 @@
-<h2>Song Index</h2>
-<% if @songs.any? %>
+<h2>Your Songs</h2>
+
 <ul>
 <% @songs.each do |s| %>
   <li>
@@ -8,6 +8,5 @@
   </li>  
 <% end %>
 </ul>
-<% end %>
 
 <%= link_to "Add a Song", new_song_path %>
