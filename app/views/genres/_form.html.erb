@@ -1,14 +1,18 @@
-<% if @genre.errors.any? %>
-  <h2>Errors</h2>
-  <ul>
-    <% @genre.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
+<%= simple_form_for(@genre, html: {class: "form-horizontal"}) do |f| %>
+  <% if @genre.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@genre.errors.count, "error") %> prohibited this genre from being saved:</h2>
+      <ul>
+        <% @genre.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= form_for(@genre) do |f| %>
-  <%= f.label "Name" %>
-  <%= f.text_field :name %><br/>
-  <%= f.submit %>
+  <%= f.input :name %>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
 <% end %>
