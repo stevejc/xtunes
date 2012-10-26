@@ -1,15 +1,17 @@
 class SongsController < ApplicationController
   
   def index
+    @search = Song.search(params[:q])
     if current_user.try(:admin?) || !current_user
-      @songs = Song.all
+      @songs = @search.result
     else
       ids_to_exclude = []
       current_user.songs.each do |x|
         ids_to_exclude <<  x.id
       end
       songs_table = Arel::Table.new(:songs)
-      @songs = Song.where(songs_table[:id].not_in ids_to_exclude)
+      @search = Song.where(songs_table[:id].not_in ids_to_exclude).search(params[:q])
+      @songs = @search.result
     end
   end
   

@@ -12,8 +12,11 @@
     <div class="navbar-inner">
       <%= link_to "Xtunes", root_path, :class => "brand" %>
       <ul class="nav">
-        <li><%= link_to "Songs", songs_path %></li>
+        <li><%= link_to "Buy a Song", songs_path %></li>
         <li><%= link_to "Mixtapes", mixtapes_path %></li>
+        <% if current_user %>
+          <li><%= link_to "My Songs", purchases_path %></li>
+        <% end %>
         <% if current_user.try(:admin?) %>
           <li><%= link_to "Albums", albums_path %></li>
           <li><%= link_to "Artist", artists_path %></li>

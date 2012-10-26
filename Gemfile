@@ -10,6 +10,7 @@ gem 'devise'
 gem 'fog'
 gem 'httparty'
 gem 'pg'
+gem 'ransack'
 gem 'thin'
 
 
