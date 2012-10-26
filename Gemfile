@@ -11,6 +11,7 @@ gem 'fog'
 gem 'httparty'
 gem 'pg'
 gem 'ransack'
+gem 'simple_form'
 gem 'thin'
 
 
