@@ -4,7 +4,6 @@
 <% @songs.each do |s| %>
   <li>
   <%= link_to s.name, song_path(s) %><br/>
-  <%= audio_tag(s.song_file, :controls => true) if s.song_file.present? %><br/>
   </li>  
 <% end %>
 </ul>
