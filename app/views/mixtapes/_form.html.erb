@@ -11,7 +11,11 @@
   <%= f.label "Name" %>
   <%= f.text_field :name %><br/>
   <%= f.label "Song" %><br/>
-  <%= select_tag('mixtape[song_ids]', options_from_collection_for_select(Song.all, :id, :name), {:multiple => true, :size => 3}) %><br/>
+  <%= select_tag('mixtape[song_ids]', options_from_collection_for_select(current_user.songs, :id, :name), {:multiple => true, :size => 3}) %><br/>
   <br/>
-  <%= f.submit %>
+  <%= f.submit %><br/>
+
 <% end %>
+<p>Looking for a different song, search our catalog for more songs</p>
+
+<%= link_to "Search Songs", songs_path %>
