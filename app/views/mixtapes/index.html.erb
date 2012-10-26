@@ -1,16 +1,22 @@
-<h2>Mixtapes Index</h2>
+<div>
+	<h2>Your Mixtapes</h2>
+</div>
 
-<ul>
+<table class="table">
+  <tr>
+    <th>Mixtape</th>
+    <th></th>
+  </tr>
+
+
 <% @mixtapes.each do |m| %>
-  <li>
-  <%= m.name %>
-  <%= link_to "Edit", edit_mixtape_path(m) %>
-  <%= link_to "Show", mixtape_path(m) %>
-  <%= link_to "Delete", mixtape_path(m), :method => :delete %>
-  </li>
+  <tr>
+    <td><%= m.name %></td>
+    <td><%= link_to "Edit ", edit_mixtape_path(m) %>|
+    <%= link_to " Show", mixtape_path(m) %>|
+    <%= link_to " Delete", mixtape_path(m), :method => :delete %></td>
+  </tr>
 <% end %>
-</ul>
-
-<br/>
+</table>
 <br/>
 <%= link_to "Add a Mixtape", new_mixtape_path %>
