@@ -30,7 +30,8 @@ class GenresController < ApplicationController
       @genre = Genre.find(params[:id])
 
       if @genre.update_attributes(params[:genre])
-        redirect_to genre_path(@genre)
+        flash[:notice] = "You have successfully updated the #{@genre.name} genre!"
+        redirect_to genres_path
       else
         render :edit
       end
