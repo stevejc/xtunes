@@ -7,28 +7,17 @@
   </ul>
 <% end %>
 
-<%= form_for(@song, :html => {:multipart => true}) do |f| %>
-  <%= f.label "Song Name:" %>
-  <%= f.text_field :name %><br/>
-  <%= f.label "Rating:" %>
-  <%= f.text_field :rating %><br/>
-  <%= f.label "Favorite:" %>
-  <%= f.text_field :favorite %><br/>
-  <%= f.label "Price:" %>
-  <%= f.text_field :price %><br/>
-  <%= f.label "Lyrics:" %>
-  <%= f.text_area :lyrics %><br/>
-  <%= f.label "Upload a Photo" %>
-  <%= f.file_field :photo %><br/> 
-  <%= f.label "Artist" %><br/>
-  <%= select_tag('song[artist_ids]', options_from_collection_for_select(Artist.all, :id, :name), {:multiple => true, :size => 3}) %><br/>
-  <%= f.label "Genre" %><br/>
-  <%= select_tag('song[genre_ids]', options_from_collection_for_select(Genre.all, :id, :name), {:multiple => true, :size => 3}) %><br/>
-  <%= f.label "Album" %><br/>
-   <%= select_tag('song[album_ids]', options_from_collection_for_select(Album.all, :id, :name), {:multiple => true, :size => 3}) %><br/>
-  
-  <%= f.label "Upload a song" %><br/>
-  <%= f.file_field :song_file %><br/>
-  
-  <%= f.submit %>
+<%= simple_form_for(@song, :html => {:multipart => true, class: "form-vertical"}) do |f| %>
+  <%= f.input :name, :label => "Song Name" %> 
+  <%= f.input :price %>
+  <%= f.association :artists %>
+  <%= f.association :genres %>
+  <%= f.association :albums %>
+  <%= f.input :lyrics %>
+  <%= f.input :photo, :label => "Upload a photo", :as => :file %>
+  <%= f.input :song_file, :label => "Upload a song", :as => :file %>
+   
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
 <% end %>

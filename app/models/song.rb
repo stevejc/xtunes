@@ -12,5 +12,5 @@ class Song < ActiveRecord::Base
   validates :name, :presence => true
   
   mount_uploader :song_file, Mp3Uploader
-  
+   
 end
