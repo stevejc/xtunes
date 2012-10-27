@@ -20,10 +20,10 @@
 
 <table class="table">
   <tr>
-    <th>Song</th>
-    <th>Artists</th>
-    <th>Albums</th>
-    <th>Genres</th>
+    <th><%= sort_link @search, :name, "Song"%></th>
+    <th><%= sort_link @search, :artists_name, "Artists"%></th>
+    <th><%= sort_link @search, :albums_name, "Albums"%></th>
+    <th><%= sort_link @search, :genres_name, "Genres"%></th>
   </tr>
 
 <% @songs.each do |s| %>
