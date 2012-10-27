@@ -2,27 +2,51 @@
 
 <% if current_user.try(:admin?) %>
 <%= link_to "Edit ", edit_song_path(@song) %>|
-<%= link_to " Delete", song_path(@song), :method => :delete %><br/>
+<%= link_to " Delete", song_path(@song), :method => :delete %><br/><br/>
 <% end %>
 
-Artists: <br/>
-<% @song.artists.each do |a| %>
-  <%= a.name %><br/>
-<% end %><br/>
-Genres: <br/>
-<% @song.genres.each do |g| %>
-  <%= g.name %><br/>
-<% end %><br/>
-Albums: <br/>
-<% @song.albums.each do |a| %>
-  <%= a.name %><br/>
-<% end %><br/>
 <%= render "buyform" %>
 
-Song Rating: <%= @song.rating %><br/>
-Song Favorite: <%= @song.favorite %><br/>
-Song Price: <%= @song.price %><br/>
-Song Lyrics: <%= @song.lyrics %><br/>
+<div class="row">
+  <div class="span5">
+<table class="table">
 
+  <tr>
+    <td>Artists: </td>
+    <td>
+      <% @song.artists.each do |a| %>
+        <%= a.name %><br/>
+      <% end %><br/>
+    </td>
+  </tr> 
+  <tr>
+    <td>Artists: </td>
+    <td>
+      <% @song.albums.each do |a| %>
+        <%= a.name %><br/>
+      <% end %><br/>
+    </td>
+  </tr>
+  <tr>
+    <td>Genres: </td>
+    <td>
+      <% @song.genres.each do |g| %>
+        <%= g.name %><br/>
+      <% end %>
+    </td>
+  </tr> 
+  
+  <tr>
+    <td>Lyrics: </td>
+    <td><%= @song.lyrics %></td>
+  </tr>
 
-<%= audio_tag(@song.song_file, :controls => true) if @song.song_file.present? %>
+</table>
+</div>
+</div>
+<br/>
+
+<% if current_user.try(:admin?) %>
+  <%= audio_tag(@song.song_file, :controls => true) if @song.song_file.present? %>
+<% end %>
+

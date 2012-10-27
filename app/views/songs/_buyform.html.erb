@@ -13,14 +13,12 @@
 
 
 
-<% if @song.users.include?(current_user) %>
-  Already have this song.
-<% else %>
-Song Price: <%= @song.price %><br/>
+<% unless @song.users.include?(current_user) %>
+
   <%= form_tag '/buy' do %>
     <%= hidden_field :song, :id %>
     <%= hidden_field :song, :price %>
-    <%= submit_tag "Buy it Now"%>
+    <%= submit_tag "Buy it Now, $#{@song.price}", :class => 'btn btn-primary'%>
   <% end %>
 
 <% end %>
