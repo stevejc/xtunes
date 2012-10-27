@@ -2,27 +2,23 @@
   <h2>Your Songs</h2>
 </div>
 
-<%= search_form_for @search do |f| %>
+<%= search_form_for @search, :builder => SimpleForm::FormBuilder do |f| %>
   <div class="field">
   <%= f.label :name_cont, "Search by Name" %>
-  <%= f.text_field :name_cont %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Search" %>
+  <%= f.text_field :name_cont %><br/>
   </div>
   
   <div class="field">
   <%= f.label :genres_name_cont, "Search by Genre" %>
-  <%= f.text_field :genres_name_cont %>
+  <%= f.text_field :genres_name_cont %><br/>
+  <%= f.button :submit, "Search" %>
   </div>
-  <div class="actions">
-    <%= f.submit "Search" %>
-  </div>
+
 <% end %>
 
 <table class="table">
   <tr>
-    <th>Song</th>
+    <th><%= sort_link @search, :name, "Song"%></th>
     <th></th>
   </tr>
 
