@@ -7,15 +7,17 @@
   </ul>
 <% end %>
 
-<%= form_for(@mixtape) do |f| %>
-  <%= f.label "Name" %>
-  <%= f.text_field :name %><br/>
+<%= simple_form_for(@mixtape, :html => {:multipart => true, class: "form-vertical"}) do |f| %>
+  <%= f.input :name %>
   <%= f.label "Song" %><br/>
   <%= select_tag('mixtape[song_ids]', options_from_collection_for_select(current_user.songs, :id, :name), {:multiple => true, :size => 3}) %><br/>
   <br/>
-  <%= f.submit %><br/>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
 
 <% end %>
 <p>Looking for a different song, search our catalog for more songs</p>
 
-<%= link_to "Search Songs", songs_path %>
+<%= link_to "Search Songs", songs_path, :class=> "btn" %><br/><br/>
+
