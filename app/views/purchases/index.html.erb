@@ -5,7 +5,7 @@
 <%= search_form_for @search, :builder => SimpleForm::FormBuilder do |f| %>
   <div class="field">
   <%= f.label :name_cont, "Search by Name" %>
-  <%= f.text_field :name_cont %><br/>
+  <%= f.text_field :name_cont %>
   </div>
   
   <div class="field">
@@ -24,10 +24,10 @@
 
 <% @songs.each do |s| %>
   <tr>
-    <td><%= link_to s.name, song_path(s) %></td>>
+    <td><%= link_to s.name, song_path(s) %></td>
     <td><%= audio_tag(s.song_file, :controls => true) if s.song_file.present? %></td>
   </tr>
 <% end %>
 </table>
 
-<%= link_to "Add a Song", new_song_path %>
+<%= link_to "Add a Song", new_song_path, :class=> "btn" %>
