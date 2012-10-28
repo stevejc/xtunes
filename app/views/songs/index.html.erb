@@ -45,5 +45,7 @@
 </table>
 <br/>
 
-<%= link_to "Add a Song", new_song_path, :class=> "btn" %><br/><br/>
+<% if current_user.try(:admin?) %>
+  <%= link_to "Add a Song", new_song_path, :class=> "btn" %><br/><br/>
+<% end %>
 
