@@ -1,4 +1,5 @@
 class SongsController < ApplicationController
+  before_filter :authenticate, :except => [:index, :show]
   
   def index
     @search = Song.search(params[:q])
@@ -75,6 +76,15 @@ class SongsController < ApplicationController
     @song.delete
     
     redirect_to songs_path
+  end
+  
+  private
+  
+  def authenticate
+    unless current_user && current_user.admin?
+      flash[:warning] = "You do not have access to the requested page!"
+      redirect_to home_path 
+    end
   end
   
 
