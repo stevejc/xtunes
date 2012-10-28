@@ -9,6 +9,7 @@ Release Date: <%= @album.release_date.strftime("%B %d, %Y") %><br/><br/>
   <%= link_to s.name, song_path(s) %><br>
 <% end %>
 
+
 <br/>
 <%= link_to "Edit ", edit_album_path(@album) %>|
 <%= link_to " Delete", album_path(@album), :method => :delete %>

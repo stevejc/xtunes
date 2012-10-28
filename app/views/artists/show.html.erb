@@ -1,10 +1,20 @@
-<h2>Show Artist</h2>
+<h2><%= @artist.name %></h2>
 
-<%= @artist.name %><br/>
-<%= @artist.dob %><br/>
-<%= @artist.bio %><br/>
-<%= image_tag(@artist.photo) if @artist.photo.present? %>
+
+
+<%= image_tag(@artist.photo, :size => "150x150") if @artist.photo.present? %><br/>
+Born: <%= @artist.dob %><br/>
+Bio: <%= @artist.bio %><br/>
+<h5>Songs: </h5>
+<% @artist.songs.each do |s| %>
+  <%= link_to s.name, song_path(s) %><br>
+<% end %>
+<h5>Albums: </h5>
+<% @albums.each do |a| %>
+  <%= link_to a.name, album_path(a) %><br>
+<% end %>
 
 <br/>
 <%= link_to "Edit ", edit_artist_path(@artist) %>|
 <%= link_to " Delete", artist_path(@artist), :method => :delete %>
+
