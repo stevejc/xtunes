@@ -9,9 +9,7 @@
 
 <%= simple_form_for(@mixtape, :html => {:multipart => true, class: "form-vertical"}) do |f| %>
   <%= f.input :name %>
-  <%= f.label "Song" %><br/>
-  <%= select_tag('mixtape[song_ids]', options_from_collection_for_select(current_user.songs, :id, :name), {:multiple => true, :size => 3}) %><br/>
-  <br/>
+  <%= f.association :songs, :collection => current_user.songs %>
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
