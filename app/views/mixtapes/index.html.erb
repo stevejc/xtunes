@@ -2,6 +2,7 @@
 	<h2>Your Mixtapes</h2>
 </div>
 
+<% if current_user %>
 <table class="table">
   <tr>
     <th>Mixtape</th>
@@ -19,4 +20,14 @@
 <% end %>
 </table>
 <br/>
-<%= link_to "Add a Mixtape", new_mixtape_path %>
+<%= link_to "Add a Mixtape", new_mixtape_path, :class=> "btn" %><br/><br/>
+
+<% else %>
+<h3>Message for non users to signup</h3>
+<p>Sign up so you can create your own custom mixtapes and play your songs anywhere</p>
+
+<%= link_to "Signup Today", new_user_registration_path, :class=> "btn btn-warning" %><br/><br/>
+
+
+
+<% end %>
