@@ -3,6 +3,11 @@
 Release Date: <%= @album.release_date.strftime("%B %d, %Y") %><br/><br/>
 
 <%= image_tag(@album.photo, :size => "150x150") if @album.photo.present? %><br/>
+ 
+<h5>Songs: </h5>
+<% @album.songs.each do |s| %>
+  <%= link_to s.name, song_path(s) %><br>
+<% end %>
 
 <br/>
 <%= link_to "Edit ", edit_album_path(@album) %>|
