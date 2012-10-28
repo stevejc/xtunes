@@ -1,8 +1,8 @@
-<h2>Show Album</h2>
-<br/>
-<%= @album.name %><br/>
+<h2><%= @album.name %></h2>
 
-<%= image_tag(@album.photo) if @album.photo.present? %>
+Release Date: <%= @album.release_date.strftime("%B %d, %Y") %><br/><br/>
+
+<%= image_tag(@album.photo, :size => "150x150") if @album.photo.present? %><br/>
 
 <br/>
 <%= link_to "Edit ", edit_album_path(@album) %>|
