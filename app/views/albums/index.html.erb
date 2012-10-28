@@ -4,6 +4,7 @@
 
 <% @albums.each do |a| %>
   <tr>
+  <td><%= image_tag(a.photo, :size => "40x40") if a.photo.present? %></td>
     <td><%= link_to a.name, album_path(a) %></td>
     <td>
       <%= link_to "Edit ", edit_album_path(a) %>|
