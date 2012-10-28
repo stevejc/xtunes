@@ -1,17 +1,17 @@
 <h2>Album Index</h2>
 
-<ul>
-<% @albums.each do |a| %>
-  <li>
-  <%= a.name %>
-  <%= link_to "Edit", edit_album_path(a) %>
-  <%= link_to "Show", album_path(a) %>
-  <%= link_to "Delete", album_path(a), :method => :delete %>
-  </li>
-  
-<% end %>
-</ul>
+<table class="table">
 
-<br/>
-<br/>
-<%= link_to "Add an Album", new_album_path %>
+<% @albums.each do |a| %>
+  <tr>
+    <td><%= link_to a.name, album_path(a) %></td>
+    <td>
+      <%= link_to "Edit ", edit_album_path(a) %>|
+      <%= link_to " Show ", album_path(a) %>|
+      <%= link_to " Delete", album_path(a), :method => :delete %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to "Add an Album", new_album_path, :class=> "btn" %>
