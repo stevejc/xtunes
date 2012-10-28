@@ -7,14 +7,16 @@
   </ul>
 <% end %>
 
-<%= form_for(@album, :html => {:multipart => true}) do |f| %>
-  <%= f.label "Name" %>
-  <%= f.text_field :name %><br/>
-    <%= f.label "Enter a URL for the Album Cover or Up Load One" %>
-  <%= f.text_field :remote_photo_url %><br/>
-  <%= f.label "or Up Load One" %>
-  <%= f.file_field :photo %><br/>
-  <%= f.label "Release Date" %>
-  <%= f.date_select :release_date %><br/>
-  <%= f.submit %>
+<%= simple_form_for(@album, :html => {:multipart => true, class: "form-vertical"}) do |f| %>
+  <%= f.input :name, :label => "Album Name" %>
+  <%= f.input :remote_photo_url, :label => "Enter a URL for the Album Cover" %>
+  <%= f.input :photo, :label => "or Upload One", :as => :file %>
+  <%= f.input :release_date %>
+  
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
 <% end %>
+  
+
+
