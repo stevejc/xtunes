@@ -5,6 +5,7 @@
 
 <% @artists.each do |a| %>
   <tr>
+  <td><%= image_tag(a.photo, :size => "40x40") if a.photo.present? %></td>
   <td><%= a.name %></td>
   <td>
     <%= link_to "Edit ", edit_artist_path(a) %>|
