@@ -2,7 +2,7 @@
 	<h2>Find a Song to Add to Your Collection</h2>
 </div>
 
-<% if @songs.any? %>
+
   
 <%= search_form_for @search, :builder => SimpleForm::FormBuilder do |f| %>
   <div class="field">
@@ -40,7 +40,7 @@
     <% end %></td>
   <tr/> 
 <% end %>
-<% end %>
+
 
 </table>
 <br/>
