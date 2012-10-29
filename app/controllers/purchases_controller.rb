@@ -8,5 +8,11 @@ class PurchasesController < ApplicationController
       @songs = []
     end
   end
+  
+  def search
+    index
+    render :index
+  end
+  
 end
 

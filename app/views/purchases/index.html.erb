@@ -2,7 +2,7 @@
   <h2>Your Songs</h2>
 </div>
 
-<%= search_form_for @search, :builder => SimpleForm::FormBuilder do |f| %>
+<%= search_form_for @search, :url => search_purchases_path, :html=> {:method => :post}, :builder => SimpleForm::FormBuilder do |f| %>
   <div class="field">
   <%= f.label :name_cont, "Search by Name" %>
   <%= f.text_field :name_cont %>

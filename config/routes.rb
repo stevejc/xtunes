@@ -6,6 +6,12 @@ Xtunes::Application.routes.draw do
   match '/home' => 'home#index'
   match '/buy' => 'songs#buy', :via => 'post'
   match '/purchases' => 'purchases#index'
+  
+  resources :purchases do
+    collection do
+      match 'search' => 'purchases#search', :via => [:get, "post"], :as => :search
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
