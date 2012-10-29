@@ -7,17 +7,16 @@
   </ul>
 <% end %>
 
-<%= form_for(@artist) do |f| %>
-  <%= f.label "Name" %>
-  <%= f.text_field :name %><br/>
-  <%= f.label "Date of Birth" %>
-  <%= f.text_field :dob %><br/>
-  <%= f.label "Bio" %>
-  <%= f.text_area :bio %><br/>
-  <%= f.label "Add a Artist Photo, Enter a URL" %>
-  <%= f.text_field :remote_photo_url %><br/>
-  <%= f.label "or Up Load One" %>
-  <%= f.file_field :photo %><br/>
+<%= simple_form_for(@artist, :html => {:multipart => true, class: "form-vertical"}) do |f| %>
+  <%= f.input :name, :label => "Artist Name" %>
+  <%= f.input :dob, :label => "Date of Birth", :start_year => 2000, :end_year => 1950 %>
+  <%= f.input :bio, :input_html => { :rows => 3 } %>
+  <%= f.input :remote_photo_url, :label => "Enter a URL for a picture of the Artist" %>
+  <%= f.input :photo, :label => "or Upload One", :as => :file %>
   
-  <%= f.submit %>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
 <% end %>
+
+
