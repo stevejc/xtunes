@@ -11,7 +11,7 @@
   <%= f.input :name, :label => "Album Name" %>
   <%= f.input :remote_photo_url, :label => "Enter a URL for the Album Cover" %>
   <%= f.input :photo, :label => "or Upload One", :as => :file %>
-  <%= f.input :release_date %>
+  <%= f.input :release_date, :start_year => Time.now.year, :end_year => 1950 %>
   
   <div class="form-actions">
     <%= f.button :submit %>
