@@ -5,8 +5,15 @@
 <%= link_to " Delete", song_path(@song), :method => :delete %><br/><br/>
 <% end %>
 
-<%= render "buyform" %>
+<% if current_user %>
+  <%= render "buyform" %>
+<% else %>
+<p>Sign up so you can purchase this song and add it to your collection</p>
 
+<%= link_to "Signup Today", new_user_registration_path, :class=> "btn btn-warning" %>
+<% end %>
+<br/>
+<br/>
 <div class="row">
   <div class="span5">
 <table class="table">
