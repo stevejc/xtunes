@@ -12,10 +12,43 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require "jquery.jplayer.min"
 //= require "bootstrap"
 //= require_tree .
 
 $(function(){
+	$("#jquery_jplayer_1").jPlayer({
+	        ready: function () {
+	          $(this).jPlayer("setMedia", {
+	            m4a: "http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a",
+	            oga: "http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.ogg"
+	          });
+	        },
+	        swfPath: "/js",
+	        supplied: "m4a, oga"
+	      });
+	
+				var myPlaylist = new jPlayerPlaylist({
+				        jPlayer: "#jp_player_1",
+				        cssSelectorAncestor: "#jp_container_1"
+				    }, [
+				        {
+				            title:"Your Title 1",
+				            mp3:"/path/to/music.mp3"
+				        },    
+				        {
+				            title:"Your Title 2",
+				            mp3:"/path/to/more-music.mp3"
+				        }
+				    ], {
+				        playlistOptions: {
+				            loopOnPrevious: true
+				        },
+				        loop: true,
+				        swfPath: "/path/to/directory/with/Jplayer",
+				        supplied: "mp3"
+				    });
+	
 
 
 });
