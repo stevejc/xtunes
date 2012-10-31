@@ -28,6 +28,11 @@ class AlbumsController < ApplicationController
 
     def show
       @album = Album.find(params[:id])
+      @artists = []
+      @album.artists.each do |a|
+        @artists << a
+        @artists = @artists.uniq
+      end
     end
 
     def edit

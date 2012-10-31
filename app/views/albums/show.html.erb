@@ -9,6 +9,11 @@ Release Date: <%= @album.release_date.strftime("%B %d, %Y") %><br/><br/>
   <%= link_to s.name, song_path(s) %><br>
 <% end %>
 
+<h5>Artists: </h5>
+<% @artists.each do |a| %>
+  <%= link_to a.name, artist_path(a) %><br>
+<% end %>
+
 
 <br/>
 <%= link_to "Edit ", edit_album_path(@album) %>|
