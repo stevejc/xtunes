@@ -24,6 +24,7 @@ class MixtapesController < ApplicationController
 
     def show
       @mixtape = current_user.mixtapes.find(params[:id])
+      gon.playlist = @mixtape.songs
     end
 
     def edit

@@ -13,42 +13,39 @@
 //= require jquery
 //= require jquery_ujs
 //= require "jquery.jplayer.min"
+//= require "jplayer.playlist.min"
 //= require "bootstrap"
 //= require_tree .
 
 $(function(){
-	$("#jquery_jplayer_1").jPlayer({
-	        ready: function () {
-	          $(this).jPlayer("setMedia", {
-	            m4a: "http://www.jplayer.org/audio/m4a/Miaow-07-Bubble.m4a",
-	            oga: "http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.ogg"
-	          });
+console.log(gon.playlist);
+
+for (var i in gon.playlist) { 
+	console.log(gon.playlist[i]["name"]);
+  console.log(gon.playlist[i]["song_file"]["url"]);
+ };
+
+	var myPlaylist = new jPlayerPlaylist({
+	        jPlayer: "#jquery_jplayer_1",
+	        cssSelectorAncestor: "#jp_container_1"
+	    }, [
+	        {
+	            title:"Love Song",
+	            m4a:"https://s3.amazonaws.com/Xtunes/uploads/song/song_file/14/01_Verb_Song_1.m4a?AWSAccessKeyId=AKIAJFYFZNFFLLYEWYDA&Signature=2ol8%2F7PcO7YfOUiAI%2BsN5iRmqQc%3D&Expires=1351646877"
+	        },    
+	        {
+	            title:"asdasdasdasd 1",
+	            m4a:"https://s3.amazonaws.com/Xtunes/uploads/song/song_file/10/05_Doors_Of_Your_Heart.m4a?AWSAccessKeyId=AKIAJFYFZNFFLLYEWYDA&Signature=RpBa4uiUtBJ0Qtfn5VrlVslBLf4%3D&Expires=1351646877"
+	        }
+	    ], {
+	        playlistOptions: {
+	            loopOnPrevious: true
 	        },
-	        swfPath: "/js",
-	        supplied: "m4a, oga"
-	      });
-	
-				var myPlaylist = new jPlayerPlaylist({
-				        jPlayer: "#jp_player_1",
-				        cssSelectorAncestor: "#jp_container_1"
-				    }, [
-				        {
-				            title:"Your Title 1",
-				            mp3:"/path/to/music.mp3"
-				        },    
-				        {
-				            title:"Your Title 2",
-				            mp3:"/path/to/more-music.mp3"
-				        }
-				    ], {
-				        playlistOptions: {
-				            loopOnPrevious: true
-				        },
-				        loop: true,
-				        swfPath: "/path/to/directory/with/Jplayer",
-				        supplied: "mp3"
-				    });
-	
+	        loop: true,
+	        swfPath: "/path/to/directory/with/Jplayer",
+	        supplied: "m4a"
+	    });
+
 
 
 });
