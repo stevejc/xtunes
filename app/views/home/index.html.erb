@@ -1,2 +1,90 @@
-<h2>Welcome to Xtunes</h2>
-<p> The best way to discover great new songs, create customized playlists and share with your friends.</p>
+
+<% if current_user %>
+  <div class="row">
+    <div class="span4 offset4">
+      <h2>Xtunes Dashboard</h2>
+    </div>
+  </div>
+<div class="row">
+<div class="span6">
+<h3>Your Songs</h3>
+<%= search_form_for @search, :url => search_purchases_path, :html=> {:method => :post}, :builder => SimpleForm::FormBuilder do |f| %>
+  <div class="field">
+  <%= f.label :name_cont, "Search by Name" %>
+  <%= f.text_field :name_cont %>
+  </div>
+  
+  <div class="field">
+  <%= f.label :genres_name_cont, "Search by Genre" %>
+  <%= f.text_field :genres_name_cont %><br/>
+  </div>
+  <%= f.button :submit, "Search" %>
+
+<% end %>
+
+<table class="table">
+  <tr>
+    <th><%= sort_link @search_your_songs, :name, "Song"%></th>
+    <th></th>
+  </tr>
+
+<% @your_songs.each do |s| %>
+  <tr>
+    <td><%= link_to s.name, song_path(s) %></td>
+    <td><%= audio_tag(s.song_file, :controls => true) if s.song_file.present? %></td>
+  </tr>
+<% end %>
+</table>
+
+
+
+</div>
+<div class="span5 offset1">
+
+<h3>Your mixtapes</h3>
+<table class="table">
+  <tr>
+    <th>Mixtape</th>
+    <th></th>
+  </tr>
+
+
+<% @mixtapes.each do |m| %>
+  <tr>
+    <td><%= m.name %></td>
+    <td><%= link_to "Edit ", edit_mixtape_path(m) %>|
+    <%= link_to " Show", mixtape_path(m) %>|
+    <%= link_to " Delete", mixtape_path(m), :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<%= link_to "Add a Mixtape", new_mixtape_path, :class=> "btn" %><br/><br/>
+<hr noshade size=3>
+
+
+<h3>Add a Song</h3>
+<%= search_form_for @search, :builder => SimpleForm::FormBuilder do |f| %>
+  <div class="field">
+  <%= f.label :name_cont, "Search by Name" %>
+  <%= f.text_field :name_cont %><br/>
+  </div>
+  
+  <div class="field">
+  <%= f.label :genres_name_cont, "Search by Genre" %>
+  <%= f.text_field :genres_name_cont %><br/>
+  <%= f.button :submit, "Search" %>
+  </div>
+
+<% end %>
+
+
+
+
+<br/>
+
+</div>
+</div>
+<% else %>
+  <h2>Welcome to Xtunes</h2>
+  <p> The best way to discover great new songs, create customized playlists and share with your friends.</p>
+<% end %>
