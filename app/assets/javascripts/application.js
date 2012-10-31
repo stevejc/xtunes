@@ -18,21 +18,13 @@
 //= require_tree .
 
 $(function(){
-console.log(gon.playlist);
 
-for (var i in gon.playlist) { 
-	console.log(gon.playlist[i]["name"]);
-  console.log(gon.playlist[i]["song_file"]["url"]);
- };
+	var playlist_tracks = [];
+	for (var i in gon.playlist) {
+	  var obj = { title: gon.playlist[i]["name"], mp3: gon.playlist[i]["song_file"]["url"] };
+	  playlist_tracks.push(obj);
+	}
 
-
-var playlist_tracks = [];
-for (var i in gon.playlist) {
-  var obj = { title: gon.playlist[i]["name"], mp3: gon.playlist[i]["song_file"]["url"] };
-  playlist_tracks.push(obj);
-}
-
-console.log(playlist_tracks)
 
 	var myPlaylist = new jPlayerPlaylist({
 	        jPlayer: "#jquery_jplayer_1",
@@ -44,7 +36,7 @@ console.log(playlist_tracks)
 	            loopOnPrevious: true
 	        },
 	        loop: true,
-	        swfPath: "/path/to/directory/with/Jplayer",
+	        swfPath: "/vendor/jQuery,jPlayer.2.2.0/Jplayer",
 	        supplied: "mp3"
 	    });
 
