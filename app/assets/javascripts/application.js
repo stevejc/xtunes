@@ -25,27 +25,27 @@ for (var i in gon.playlist) {
   console.log(gon.playlist[i]["song_file"]["url"]);
  };
 
+
+var playlist_tracks = [];
+for (var i in gon.playlist) {
+  var obj = { title: gon.playlist[i]["name"], mp3: gon.playlist[i]["song_file"]["url"] };
+  playlist_tracks.push(obj);
+}
+
+console.log(playlist_tracks)
+
 	var myPlaylist = new jPlayerPlaylist({
 	        jPlayer: "#jquery_jplayer_1",
 	        cssSelectorAncestor: "#jp_container_1"
-	    }, [
-	        {
-	            title:"Love Song",
-	            m4a:"https://s3.amazonaws.com/Xtunes/uploads/song/song_file/14/01_Verb_Song_1.m4a?AWSAccessKeyId=AKIAJFYFZNFFLLYEWYDA&Signature=2ol8%2F7PcO7YfOUiAI%2BsN5iRmqQc%3D&Expires=1351646877"
-	        },    
-	        {
-	            title:"asdasdasdasd 1",
-	            m4a:"https://s3.amazonaws.com/Xtunes/uploads/song/song_file/10/05_Doors_Of_Your_Heart.m4a?AWSAccessKeyId=AKIAJFYFZNFFLLYEWYDA&Signature=RpBa4uiUtBJ0Qtfn5VrlVslBLf4%3D&Expires=1351646877"
-	        }
-	    ], {
+	    }, playlist_tracks,   
+	        
+	     {
 	        playlistOptions: {
 	            loopOnPrevious: true
 	        },
 	        loop: true,
 	        swfPath: "/path/to/directory/with/Jplayer",
-	        supplied: "m4a"
+	        supplied: "mp3"
 	    });
-
-
 
 });
