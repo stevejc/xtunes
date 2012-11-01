@@ -17,6 +17,9 @@
 
 <% end %>
 
+<%= image_tag(current_user.gravatar_url) %>
+<%= link_to "Update your avatar", 'http://gravatar.com/emails' %>
+
 <h3>Cancel my account</h3>
 
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
