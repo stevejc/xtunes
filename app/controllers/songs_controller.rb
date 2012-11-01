@@ -15,7 +15,7 @@ class SongsController < ApplicationController
       @search = Song.where(songs_table[:id].not_in ids_to_exclude).search(params[:q])
       @songs = @search.result
     end
-    @songs = @songs.uniq
+    @songs = @songs.to_a.uniq
   end
   
   def new
