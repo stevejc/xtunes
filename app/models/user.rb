@@ -20,6 +20,6 @@ class User < ActiveRecord::Base
     downcased_email = stripped_email.downcase
     hash = Digest::MD5.hexdigest(downcased_email)
     
-    "http://gravatar.com/avatar/#{hash}d=http%3A%2F%2Fxtunes-sc.herokuapp.com%2Fimages%2Fdefault.jpg"
+    "http://gravatar.com/avatar/#{hash}d=http%3A%2F%2Fxtunes-sc.herokuapp.com%2Fdefault.png"
   end
 end
