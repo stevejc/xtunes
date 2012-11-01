@@ -17,10 +17,12 @@ class HomeController < ApplicationController
     
     @mixtapes = Mixtape.find_all_by_user_id(current_user)
     
-    @search_your_songs = current_user.songs.search(params[:q])
+    
+    
     if current_user
-     @your_songs = @search_your_songs.result
-     @your_songs = @your_songs.uniq
+      @search_your_songs = current_user.songs.search(params[:q])
+      @your_songs = @search_your_songs.result
+      @your_songs = @your_songs.uniq
     else
       @your_songs = []
     end
