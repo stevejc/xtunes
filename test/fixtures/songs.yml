@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: songs
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  rating     :integer
+#  favorite   :boolean
+#  price      :decimal(, )
+#  photo      :string(255)
+#  song_file  :string(255)
+#  lyrics     :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 # This model initially had no columns defined.  If you add columns to the
