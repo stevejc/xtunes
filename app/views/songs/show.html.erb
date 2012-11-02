@@ -45,7 +45,7 @@
   
   <tr>
     <td>Lyrics: </td>
-    <td><%= @song.lyrics %></td>
+    <td><%= @song.lyrics.gsub(/\n/, '<br/>').html_safe %></td>
   </tr>
 
 </table>
