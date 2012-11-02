@@ -1,4 +1,3 @@
-
 <% if current_user %>
   <div class="row">
     <div class="span4 offset4">
@@ -7,88 +6,83 @@
   </div>
 <div class="row">
 <div class="span6">
-<h3>Your Songs</h3>
-<%= search_form_for @search, :url => search_purchases_path, :html=> {:method => :post}, :builder => SimpleForm::FormBuilder do |f| %>
-  <div class="field">
-  <%= f.label :name_cont, "Search by Name" %>
-  <%= f.text_field :name_cont %>
-  </div>
+  <h3>Your Songs</h3>
+  <%= search_form_for @search, :url => search_purchases_path, :html=> {:method => :post}, :builder => SimpleForm::FormBuilder do |f| %>
+    <div class="field">
+      <%= f.label :name_cont, "Search by Name" %>
+      <%= f.text_field :name_cont %>
+    </div>
   
-  <div class="field">
-  <%= f.label :genres_name_cont, "Search by Genre" %>
-  <%= f.text_field :genres_name_cont %><br/>
-  </div>
-  <%= f.button :submit, "Search" %>
+    <div class="field">
+      <%= f.label :genres_name_cont, "Search by Genre" %>
+      <%= f.text_field :genres_name_cont %><br/>
+    </div>
+    <%= f.button :submit, "Search" %>
 
-<% end %>
+  <% end %>
 
-<table class="table">
-  <tr>
-    <th><%= sort_link @search_your_songs, :name, "Song"%></th>
-    <th></th>
-  </tr>
+  <table class="table">
+    <tr>
+      <th><%= sort_link @search_your_songs, :name, "Song"%></th>
+      <th></th>
+    </tr>
 
-<% @your_songs.each do |s| %>
-  <tr>
-    <td><%= link_to s.name, song_path(s) %></td>
-    <td><%= audio_tag(s.song_file, :controls => true) if s.song_file.present? %></td>
-  </tr>
-<% end %>
-</table>
-
-
-
+  <% @your_songs.each do |s| %>
+    <tr>
+      <td><%= link_to s.name, song_path(s) %></td>
+      <td><%= audio_tag(s.song_file, :controls => true) if s.song_file.present? %></td>
+    </tr>
+  <% end %>
+  </table>
 </div>
 <div class="span5 offset1">
-
-<h3>Your mixtapes</h3>
-<table class="table">
-  <tr>
-    <th>Mixtape</th>
-    <th></th>
-  </tr>
-
-
-<% @mixtapes.each do |m| %>
-  <tr>
-    <td><%= m.name %></td>
-    <td><%= link_to "Edit ", edit_mixtape_path(m) %>|
-    <%= link_to " Show", mixtape_path(m) %>|
-    <%= link_to " Delete", mixtape_path(m), :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-<%= link_to "Add a Mixtape", new_mixtape_path, :class=> "btn" %><br/><br/>
-<hr noshade size=3>
+  <h3>Your mixtapes</h3>
+  <table class="table">
+    <tr>
+      <th>Mixtape</th>
+      <th></th>
+    </tr>
 
 
-<h3>Add a Song</h3>
-<%= search_form_for @search, :builder => SimpleForm::FormBuilder do |f| %>
-  <div class="field">
-  <%= f.label :name_cont, "Search by Name" %>
-  <%= f.text_field :name_cont %><br/>
-  </div>
+  <% @mixtapes.each do |m| %>
+    <tr>
+      <td><%= m.name %></td>
+      <td><%= link_to "Edit ", edit_mixtape_path(m) %>|
+      <%= link_to " Show", mixtape_path(m) %>|
+      <%= link_to " Delete", mixtape_path(m), :method => :delete %></td>
+    </tr>
+  <% end %>
+  </table>
+  <%= link_to "Add a Mixtape", new_mixtape_path, :class=> "btn" %><br/><br/>
+  <hr noshade size=3>
+
+  <h3>Add a Song</h3>
+  <%= search_form_for @search, :builder => SimpleForm::FormBuilder do |f| %>
+    <div class="field">
+      <%= f.label :name_cont, "Search by Name" %>
+      <%= f.text_field :name_cont %><br/>
+    </div>
   
-  <div class="field">
-  <%= f.label :genres_name_cont, "Search by Genre" %>
-  <%= f.text_field :genres_name_cont %><br/>
-  <%= f.button :submit, "Search" %>
-  </div>
+    <div class="field">
+      <%= f.label :genres_name_cont, "Search by Genre" %>
+      <%= f.text_field :genres_name_cont %><br/>
+      <%= f.button :submit, "Search" %>
+    </div>
 
-<% end %>
+  <% end %>
 
-<br/>
+  <br/>
 
 </div>
 </div>
 <% else %>
   <div id="greeting">
-  <h1>Find and Play songs from your favorite</h1>
-  <h1>Xtunes Artists</h1>
+    <h1>Find and Play songs from your favorite</h1>
+    <h1>Xtunes Artists</h1>
   <%= search_form_for @search, :builder => SimpleForm::FormBuilder do |f| %>
     <div class="songsearch">
-    <%= f.text_field :name_cont, :placeholder => "Song Name" %>
-    <%= f.button :submit, "Search" %>
+      <%= f.text_field :name_cont, :placeholder => "Song Name" %>
+      <%= f.button :submit, "Search" %>
     </div>
   <% end %>
   </div>
@@ -97,54 +91,11 @@
   
   <div class="row" id="bottomgreeting">
     <div class="span4 offset1" id="mixtape">
-    <h3>Create your own custom Mixtapes</h3>
-    <%= link_to "Signup Today", new_user_registration_path, :class=> "btn btn-large btn-warning" %><br/><br/>
+      <h3>Create your own custom Mixtapes</h3>
+      <%= link_to "Signup Today", new_user_registration_path, :class=> "btn btn-large btn-warning" %><br/><br/>
     </div>
     <div class="span5 offset1">
-    <div id="jquery_jplayer_1" class="jp-jplayer"></div>
-      <div id="jp_container_1" class="jp-audio">
-      <div class="jp-playlist">
-            <ul><li></li></ul>
-          </div>
-        <div class="jp-type-single">
-          <div class="jp-gui jp-interface">
-            <ul class="jp-controls">
-              <li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
-              <li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
-              <li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
-              <li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
-              <li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
-              <li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
-            </ul>
-            <div class="jp-progress">
-              <div class="jp-seek-bar">
-                <div class="jp-play-bar"></div>
-              </div>
-            </div>
-            <div class="jp-volume-bar">
-              <div class="jp-volume-bar-value"></div>
-            </div>
-            <div class="jp-time-holder">
-              <div class="jp-current-time"></div>
-              <div class="jp-duration"></div>
-              <ul class="jp-toggles">
-                <li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
-                <li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="jp-title">
-            <ul>
-              <li>Bubble</li>
-            </ul>
-          </div>
-          <div class="jp-no-solution">
-            <span>Update Required</span>
-            To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
-          </div>
-        </div>
-      </div>
-
+      <%= render "layouts/player" %>
       <br/>
     <div>
     
