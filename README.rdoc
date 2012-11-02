@@ -15,7 +15,7 @@ The application is hosted on Heroku at: http://xtunes-sc.herokuapp.com/
 
 2. Twitter Bootstrap and Simple Form were used to add some respectable styling to the application.
 
-3. Ransack was used to add search functinality for the songs and to add sorts to the songs tables to make finding songs much easier.
+3. Ransack was used to add search functionality for the songs and to add sorts to the songs tables to make finding songs much easier.
 
 4. jPlayer and jPlayer playlist was used to create the player used for the mixtapes.
 
@@ -25,5 +25,5 @@ The application is hosted on Heroku at: http://xtunes-sc.herokuapp.com/
 
 7. Foreman was used since local environment variables had to be created for the secret codes required for uploads to S3.
 
-8. Annotate and Pry was used to assist in development. 
+8. Annotate and Pry were used to assist in development. 
 
