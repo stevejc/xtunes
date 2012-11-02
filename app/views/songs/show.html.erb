@@ -22,16 +22,22 @@
     <td>Artists: </td>
     <td>
       <% @song.artists.each do |a| %>
-        <%= a.name %><br/>
-      <% end %><br/>
+        <div class="showpage">
+        <%= image_tag(a.photo, :size => "40x40") if a.photo.present? %>
+        <%= a.name %>
+        </div>
+      <% end %>
     </td>
   </tr> 
   <tr>
-    <td>Artists: </td>
+    <td>Albums: </td>
     <td>
       <% @song.albums.each do |a| %>
-        <%= a.name %><br/>
-      <% end %><br/>
+        <div class="showpage">
+        <%= image_tag(a.photo, :size => "40x40") if a.photo.present? %>
+        <%= a.name %>
+        </div>
+      <% end %>
     </td>
   </tr>
   <tr>

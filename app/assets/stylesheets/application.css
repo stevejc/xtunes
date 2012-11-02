@@ -12,3 +12,7 @@
  *= require_self
  *= require_tree .
  */
+
+.showpage {
+	padding-bottom: 5px;
+}
