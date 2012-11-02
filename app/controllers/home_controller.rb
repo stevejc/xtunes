@@ -27,7 +27,7 @@ class HomeController < ApplicationController
       @your_songs = []
     end
     
-    
+    gon.playlist = Song.all.sample(3)
   end
   
 end

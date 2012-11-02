@@ -16,3 +16,31 @@
 .showpage {
 	padding-bottom: 5px;
 }
+
+#greeting {
+	background: #f2f1ee;
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+#greeting h1 {
+	text-align: center
+}
+
+#mixtape {
+	text-align: center;
+}
+
+#bottomgreeting {
+	background: #a0cce1;
+	padding-top: 20px;
+	margin-left: 0px;
+	
+}
+
+.songsearch {
+	text-align: center;
+	padding-top: 20px;
+}
+
+
