@@ -10,6 +10,7 @@ class Song < ActiveRecord::Base
   has_many :users, :through => :purchases
   
   validates :name, :presence => true
+  validates :price, :numericality => { :greater_than => 0.01 }
   
   mount_uploader :song_file, Mp3Uploader
    
