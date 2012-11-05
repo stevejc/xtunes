@@ -23,10 +23,17 @@
 <%= link_to "Add a Mixtape", new_mixtape_path, :class=> "btn" %><br/><br/>
 
 <% else %>
-<h3>Message for non users to signup</h3>
-<p>Sign up so you can create your own custom mixtapes and play your songs anywhere</p>
-
-<%= link_to "Signup Today", new_user_registration_path, :class=> "btn btn-warning" %><br/><br/>
+<div class="row" id="bottomgreeting">
+  <div class="span4 offset1" id="mixtape">
+    <h3>Create your own custom Mixtapes</h3>
+    <%= link_to "Signup Today", new_user_registration_path, :class=> "btn btn-large btn-warning" %><br/><br/>
+  </div>
+  <div class="span5 offset1">
+    <%= render "layouts/player" %>
+    <br/>
+  <div>
+  
+  </div>
 
 
 

@@ -1,7 +1,11 @@
 class MixtapesController < ApplicationController
    
     def index
-      @mixtapes = Mixtape.find_all_by_user_id(current_user)
+      if current_user
+        @mixtapes = Mixtape.find_all_by_user_id(current_user)
+      else
+        gon.playlist = Song.all.sample(3)
+      end
     end
 
     def new
