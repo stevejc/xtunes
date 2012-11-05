@@ -2,7 +2,7 @@ class MixtapesController < ApplicationController
    
     def index
       if current_user
-        @mixtapes = Mixtape.find_all_by_user_id(current_user)
+        @mixtapes = current_user.mixtapes
       else
         gon.playlist = Song.all.sample(3)
       end
